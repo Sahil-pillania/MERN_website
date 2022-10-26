@@ -1,22 +1,13 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+const dotenv = require("dotenv");
 
-const PORT = 5000;
-const DB =
-  "mongodb+srv://sahil:Sahil1234@cluster0.cxi2awi.mongodb.net/mernwebsite?retryWrites=true&w=majority";
+dotenv.config({ path: "./config.env" });
+require("./db/conn");
 
-mongoose
-  .connect(DB, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    console.log("mongo connected successfully");
-  })
-  .catch((err) => {
-    console.log("Error occured during connecting to database - " + err);
-  });
+const PORT = process.env.PORT;
+
 // middleware
 const middleware = (req, res, next) => {
   console.log("Hello this is middleware");
