@@ -57,6 +57,9 @@ router.post("/register", async (req, res) => {
     if (exists) {
       return res.status(422).json({ error: "Email already exists." });
     }
+    if (password == !cpassword) {
+      return res.status(422).json({ error: "Passwords are not matching." });
+    }
     const user = new User({
       name,
       email,
