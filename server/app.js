@@ -5,7 +5,10 @@ const dotenv = require("dotenv");
 
 dotenv.config({ path: "./config.env" });
 require("./db/conn");
+app.use(express.json());
+
 // const User = require("./model/userSchema");
+app.use(require("./router/auth")); // router file to make our links
 
 const PORT = process.env.PORT;
 
