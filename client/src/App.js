@@ -3,9 +3,11 @@ import Navbar from "./components/Navbar";
 import Login from "./components/Login";
 import Contact from "./components/Contact";
 import About from "./components/About";
+import Signup from "./components/Signup";
 import "bootstrap/dist/css/bootstrap.css";
 import Home from "./components/Home";
 import { Routes, Route, Link } from "react-router-dom";
+import "./App.css";
 
 const App = () => {
   return (
@@ -15,7 +17,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/About" element={<About />} />
         <Route path="/Contact" element={<Contact />} />
-        <Route path="/signup" element={<signup />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="/Login" element={<Login />} />
       </Routes>
     </>
