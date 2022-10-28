@@ -6,7 +6,7 @@ import About from "./components/About";
 import Signup from "./components/Signup";
 import "bootstrap/dist/css/bootstrap.css";
 import Home from "./components/Home";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Footer from "./components/Footer";
 

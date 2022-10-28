@@ -10,7 +10,8 @@ section {
   align-items: center;
   justify-content: center;
 }
-.signup-form {
+.signup-form,
+.signin-form {
   background-color: #fff;
   display: flex;
   align-items: center;
@@ -32,7 +33,7 @@ section {
 .form-group {
   display: flex;
   align-items: center;
-  margin-bottom: 1rem;
+  margin: auto 2rem 1rem;
 }
 .form-group label {
   margin-right: 1rem;
@@ -59,8 +60,17 @@ section {
 .signImage {
   width: 20rem;
 }
-.signup-image p {
+.signup-image p,
+.signin-image p {
   text-align: center;
+}
+.signup-image p:hover,
+.signin-image p:hover {
+  text-decoration: underline;
+}
+.signup-image-link,
+.signin-image-link {
+  text-decoration: none;
 }
 
 @media (max-width: 700px) {
@@ -71,6 +81,9 @@ section {
 
 /* // footer  */
 .footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 2.5rem;
   background-color: #fff;
   text-align: center;
