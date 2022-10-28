@@ -8,6 +8,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import Home from "./components/Home";
 import { Routes, Route, Link } from "react-router-dom";
 import "./App.css";
+import Footer from "./components/Footer";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/signup" element={<Signup />} />
         <Route path="/Login" element={<Login />} />
       </Routes>
+      <Footer />
     </>
   );
 };

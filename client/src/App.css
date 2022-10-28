@@ -2,6 +2,9 @@
 body {
   background: rgb(245, 241, 241);
 }
+section {
+  margin: 3rem auto;
+}
 .container {
   display: flex;
   align-items: center;
@@ -59,7 +62,8 @@ body {
 
 /* // footer  */
 .footer {
-  height: 2rem;
+  height: 2.5rem;
   background-color: #fff;
   text-align: center;
+  margin-top: 10px;
 }
