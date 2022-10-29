@@ -1,15 +1,59 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import pic from "../images/reg.gif";
 
 const Signup = () => {
+  const navigate = useNavigate();
+  const [user, setUser] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    work: "",
+    password: "",
+    cpassword: "",
+  });
+
+  let name, value;
+  const handleInputs = (event) => {
+    // console.log(e);
+
+    name = event.target.name;
+    value = event.target.value;
+
+    setUser({ ...user, [name]: value });
+  };
+
+  const postData = async (e) => {
+    e.preventDefault();
+    const { name, email, phone, work, password, cpassword } = user;
+
+    const res = await fetch("/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name, email, phone, work, password, cpassword }),
+    });
+
+    const response = await res.json();
+
+    if (res.status === 422 || !response) {
+      window.alert("Invalid Registration");
+      console.log("Invalid Registration");
+    } else {
+      window.alert("Registration successful.");
+      console.log("Registration successful.");
+      navigate("/login");
+    }
+  };
+
   return (
     <>
       <section className="signup">
         <div className="container mt-5">
           <div className="signup-content">
             <div className="signup-form">
-              <form className="register-form" id="regiser-form">
+              <form method="POST" className="register-form" id="regiser-form">
                 <h2 className="form-title">Sign up</h2>
                 {/* name */}
                 <div className="form-group">
@@ -20,6 +64,8 @@ const Signup = () => {
                     type="text"
                     name="name"
                     id="name"
+                    value={user.name}
+                    onChange={handleInputs}
                     autoComplete="off"
                     placeholder="Your Name"
                   />
@@ -33,6 +79,8 @@ const Signup = () => {
                     type="email"
                     name="email"
                     id="email"
+                    value={user.email}
+                    onChange={handleInputs}
                     autoComplete="off"
                     placeholder="Your Email"
                   />
@@ -46,6 +94,8 @@ const Signup = () => {
                     type="number"
                     name="phone"
                     id="phone"
+                    value={user.phone}
+                    onChange={handleInputs}
                     autoComplete="off"
                     placeholder="Your Phone number"
                   />
@@ -59,6 +109,8 @@ const Signup = () => {
                     type="text"
                     name="work"
                     id="work"
+                    value={user.work}
+                    onChange={handleInputs}
                     autoComplete="off"
                     placeholder="Your Profession"
                   />
@@ -72,6 +124,8 @@ const Signup = () => {
                     type="password"
                     name="password"
                     id="password"
+                    value={user.password}
+                    onChange={handleInputs}
                     autoComplete="off"
                     placeholder="password"
                   />
@@ -85,6 +139,8 @@ const Signup = () => {
                     type="text"
                     name="cpassword"
                     id="cpassword"
+                    value={user.cpassword}
+                    onChange={handleInputs}
                     autoComplete="off"
                     placeholder="Confirm password"
                   />
@@ -94,6 +150,7 @@ const Signup = () => {
                     type="submit"
                     name="signup"
                     id="signup"
+                    onClick={postData}
                     className="form-submit"
                     value="Register"
                   />
