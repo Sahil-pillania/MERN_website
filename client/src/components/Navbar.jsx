@@ -6,7 +6,7 @@ const Navbar = () => {
     <>
       <nav className="navbar navbar-expand-lg bg-light">
         <div className="container-fluid">
-          <NavLink className="navbar-brand" to="#">
+          <NavLink className="navbar-brand" to="/">
             <b>
               <i>Sahil Pillania</i>
             </b>
@@ -25,7 +25,7 @@ const Navbar = () => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <NavLink className="nav-link active" aria-current="page" to="/">
+                <NavLink className="nav-link" aria-current="page" to="/">
                   Home
                 </NavLink>
               </li>

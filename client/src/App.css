@@ -175,3 +175,37 @@ section {
   flex-direction: column;
   min-height: 81vh;
 }
+/* .active {
+  background-color: red;
+} */
+
+/* About page  */
+
+.uImage img {
+  width: 10rem;
+  border-radius: 1rem;
+}
+
+.profile_form {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 2rem;
+  border-radius: 1rem;
+}
+.profile-work {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+}
+.profile-work a {
+  text-decoration: none;
+  color: black;
+}
+.profile-work a:hover {
+  text-decoration: underline;
+}
+.grid_divs {
+  margin: 0.3rem;
+}
+.experience_tab {
+  margin-bottom: 0.5rem;
+}
