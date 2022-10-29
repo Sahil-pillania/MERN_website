@@ -9,6 +9,7 @@ import Home from "./components/Home";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Footer from "./components/Footer";
+import Error from "./components/Error";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/Contact" element={<Contact />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/Login" element={<Login />} />
+        <Route path="*" element={<Error />} />
       </Routes>
       <Footer />
     </>

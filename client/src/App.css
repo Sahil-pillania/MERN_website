@@ -190,6 +190,14 @@ section {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   padding: 2rem;
   border-radius: 1rem;
+  background-color: #fff;
+}
+.Profile-edit-btn {
+  padding: 3px 6px;
+  border-radius: 8px;
+}
+.Profile-edit-btn:hover {
+  background-color: rgb(177, 234, 196);
 }
 .profile-work {
   display: flex;
@@ -208,4 +216,47 @@ section {
 }
 .experience_tab {
   margin-bottom: 0.5rem;
+}
+
+/* Error page  */
+
+.notfound {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  /* margin: 9rem 0; */
+  min-height: 82vh;
+  transition: all 0.9s fade-in-out;
+}
+.error-desc {
+  width: 27rem;
+  text-align: center;
+  color: #645b5b;
+}
+.back_image {
+  position: absolute;
+  font-size: 13rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate(-50%, -50%);
+  opacity: 0.3;
+}
+.toHomePage {
+  border: 2px solid blue;
+  padding: 1rem 1.5rem;
+  border-radius: 2rem;
+  text-decoration: none;
+  background: blue;
+  color: white;
+  transition: all 0.4s linear;
+}
+.toHomePage:hover {
+  border: 2px solid black;
+  transform: scale(0.95);
+  padding: 1rem 2rem;
+
+  background: rgb(7, 7, 155);
+  color: rgb(255, 255, 255);
 }
