@@ -11,6 +11,7 @@ app.use(express.json());
 app.use(require("./router/auth")); // router file to make our links
 
 const PORT = process.env.PORT;
+console.log("port using env is :" + PORT);
 connectDB();
 // middleware
 // const middleware = (req, res, next) => {
