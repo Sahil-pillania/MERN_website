@@ -1,7 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import login from "../images/login.gif";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 const Login = () => {
+  const navigate = useNavigate();
+  const [User, setUser] = useState({
+    email: "",
+    password: "",
+  });
+  const onChange = (e) => {
+    let name, value;
+    name = e.target.name;
+    value = e.target.value;
+    setUser({ ...User, [name]: value });
+  };
+
+  const loginUser = async (e) => {
+    const { email, password } = User;
+    e.preventDefault();
+    const res = await fetch("/signin", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    });
+    const data = res.json();
+    if (res.status === 400 || !data) {
+      window.alert("Invalid credentials");
+    } else {
+      window.alert("Login successful.");
+      navigate("/");
+    }
+  };
   return (
     <section className="signin sign-in">
       <div className="container mt-5">
@@ -19,7 +49,7 @@ const Login = () => {
               </p>
             </div>
             {/* // right side  */}
-            <form className="register-form" id="regiser-form">
+            <form method="POST" className="register-form" id="regiser-form">
               <h2 className="form-title">Sign In</h2>
 
               {/* email */}
@@ -30,6 +60,8 @@ const Login = () => {
                 <input
                   type="email"
                   name="email"
+                  onChange={onChange}
+                  value={User.email}
                   id="email"
                   autoComplete="off"
                   placeholder="Your Email"
@@ -44,6 +76,8 @@ const Login = () => {
                 <input
                   type="password"
                   name="password"
+                  onChange={onChange}
+                  value={User.password}
                   id="password"
                   autoComplete="off"
                   placeholder="password"
@@ -55,6 +89,7 @@ const Login = () => {
                   type="submit"
                   name="signin"
                   id="signin"
+                  onClick={loginUser}
                   className="form-submit"
                   value="Login"
                 />
