@@ -1,16 +1,16 @@
+const dotenv = require("dotenv");
 const express = require("express");
 const app = express();
 //const mongoose = require("mongoose");
-const connectDB = require("./db/conn");
-const dotenv = require("dotenv");
-
 dotenv.config({ path: "./config.env" });
+const connectDB = require("./db/conn");
+
 app.use(express.json());
 
 // const User = require("./model/userSchema");
 app.use(require("./router/auth")); // router file to make our links
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || "5000";
 console.log("port using env is :" + PORT);
 connectDB();
 // middleware
@@ -23,6 +23,6 @@ connectDB();
 //   res.send("Hello world");
 // });
 
-app.listen("5000", () => {
+app.listen(PORT, () => {
   console.log(`Backend App is running in port no ${PORT}.`);
 });
