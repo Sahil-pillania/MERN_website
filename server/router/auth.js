@@ -121,7 +121,13 @@ router.post("/signin", async (req, res) => {
   }
 });
 
+// user data for about page
 router.get("/aboutpage", authenticate, (req, res) => {
+  //console.log("hello about");
+  res.send(req.rootUser);
+});
+// user data for home and contact page
+router.get("/getdata", authenticate, (req, res) => {
   //console.log("hello about");
   res.send(req.rootUser);
 });

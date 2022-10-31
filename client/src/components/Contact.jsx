@@ -1,6 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const Contact = () => {
+  // const navigate = useNavigate();
+  const [data, setData] = useState({});
+
+  const callContactPage = async () => {
+    try {
+      const res = await fetch("/getdata", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      const data = await res.json();
+      //console.log("data after fetch request is :" + data);
+      setData(data);
+      if (!res.status === 200) {
+        const error = new Error(res.error);
+        throw error;
+      }
+    } catch (error) {
+      console.log("can't redirect  " + error);
+      // navigate("/login");
+    }
+  };
+
+  useEffect(() => {
+    callContactPage();
+  }, []);
+
   return (
     <>
       <div className="contact_info">
@@ -55,6 +84,7 @@ const Contact = () => {
                       type="text"
                       id="contact_form-name"
                       className="contact_form_name input_field"
+                      value={data.name}
                       placeholder="Your Name"
                       required={true}
                     />
@@ -62,6 +92,7 @@ const Contact = () => {
                       type="text"
                       id="contact_form-email"
                       className="contact_form_email input_field"
+                      value={data.email}
                       placeholder="Your email"
                       required={true}
                     />
@@ -69,6 +100,7 @@ const Contact = () => {
                       type="number"
                       id="contact_form-number"
                       className="contact_form_number input_field"
+                      value={data.phone}
                       placeholder="Your phone number"
                       required={true}
                     />

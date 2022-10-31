@@ -129,15 +129,21 @@ section {
   border: 1px solid #cacaca;
   padding: 3px 5px;
   outline: none;
+  border-radius: 8px;
 }
 .contact_form-text textarea {
   width: 100%;
+  padding: 10px;
 }
 .button {
-  padding: 0.1rem 0.3rem;
+  padding: 0.2rem 0.3rem;
   background: #1fce78;
   border-radius: 8px;
   margin: 1rem 0;
+  border: 1px solid rgb(0, 0, 0);
+}
+.button:hover {
+  background: #169f5d;
 }
 
 @media (max-width: 700px) {
