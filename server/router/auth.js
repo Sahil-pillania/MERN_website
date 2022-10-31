@@ -132,4 +132,32 @@ router.get("/getdata", authenticate, (req, res) => {
   res.send(req.rootUser);
 });
 
+/// user form data send to database from contact page
+router.post("/contact", authenticate, async (req, res) => {
+  try {
+    const { name, email, phone, message } = req.body;
+
+    if (!name || !email || !phone || !message) {
+      return res.json({ error: "please fill all the fields" });
+    }
+
+    const userContact = await User.findOne({ _id: req.userID });
+
+    if (userContact) {
+      const userMessage = await userContact.addMessage(
+        name,
+        email,
+        phone,
+        message
+      );
+
+      await userMessage.save();
+
+      res.status(201).json({ message: "user message saved" });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 module.exports = router;
