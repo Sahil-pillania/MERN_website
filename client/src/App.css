@@ -217,6 +217,9 @@ section {
 .experience_tab {
   margin-bottom: 0.5rem;
 }
+.col-md-6 {
+  overflow: auto;
+}
 
 /* Error page  */
 

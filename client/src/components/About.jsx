@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import image from "../images/logo.jpg";
 
 const About = () => {
   const navigate = useNavigate();
+  const [data, setData] = useState({});
 
   const callAboutPage = async () => {
     try {
@@ -17,8 +18,8 @@ const About = () => {
       });
 
       const data = await res.json();
-      console.log("data after fetch request is :" + data);
-
+      //console.log("data after fetch request is :" + data);
+      setData(data);
       if (!res.status === 200) {
         const error = new Error(res.error);
         throw error;
@@ -42,10 +43,10 @@ const About = () => {
           </div>
           <div className="col-md-5 grid_divs">
             <div className="profile-head">
-              <h5>Sahil Pillania</h5>
+              <h5>{data.name}</h5>
               <h6>Web Developer</h6>
               <p className="profile-rating mt-3 mb-5">
-                RANKINGS <span> </span> 1/10
+                RANKINGS <span> </span> 9/10
               </p>
 
               <ul className="nav nav-tabs" role="tablist">
@@ -120,7 +121,7 @@ const About = () => {
                     <label htmlFor="User ID">User ID</label>
                   </div>
                   <div className="col-md-6">
-                    <p>795932485432849</p>
+                    <p>{data._id}</p>
                   </div>
                 </div>
                 {/* name  */}
@@ -129,7 +130,7 @@ const About = () => {
                     <label>Name</label>
                   </div>
                   <div className="col-md-6">
-                    <p>Sahil Pillania</p>
+                    <p>{data.name}</p>
                   </div>
                 </div>
                 {/* email  */}
@@ -138,7 +139,7 @@ const About = () => {
                     <label>Email</label>
                   </div>
                   <div className="col-md-6">
-                    <p>email@email.com</p>
+                    <p>{data.email}</p>
                   </div>
                 </div>
                 {/* phone  */}
@@ -147,7 +148,7 @@ const About = () => {
                     <label>Phone</label>
                   </div>
                   <div className="col-md-6">
-                    <p>79284956546</p>
+                    <p>{data.phone}</p>
                   </div>
                 </div>
                 {/* profession  */}
@@ -156,7 +157,7 @@ const About = () => {
                     <label>Profession</label>
                   </div>
                   <div className="col-md-6">
-                    <p>Web Developer</p>
+                    <p>{data.work}</p>
                   </div>
                 </div>
               </div>
