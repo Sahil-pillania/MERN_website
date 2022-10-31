@@ -122,7 +122,7 @@ router.post("/signin", async (req, res) => {
 });
 
 router.get("/aboutpage", authenticate, (req, res) => {
-  console.log("hello about");
+  //console.log("hello about");
   res.send(req.rootUser);
 });
 
