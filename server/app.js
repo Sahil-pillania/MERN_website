@@ -1,27 +1,33 @@
 const dotenv = require("dotenv");
+const cookieParser = require("cookie-parser");
 const express = require("express");
-const app = express();
-//const mongoose = require("mongoose");
-dotenv.config({ path: "./config.env" });
+const cors = require("cors");
+const mongoose = require("mongoose");
 const connectDB = require("./db/conn");
 
+const app = express();
+const PORT = process.env.PORT || "5000";
+
+dotenv.config({ path: "./config.env" });
+app.use(cookieParser());
+app.use(cors());
 app.use(express.json());
 
 // const User = require("./model/userSchema");
-app.use(require("./router/auth")); // router file to make our links
 
-const PORT = process.env.PORT || "5000";
+// app.use((req, res, next) => {
+//   if (req.method === "OPTIONS") {
+//     //res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+//     res.header("Access-Control-Allow-Methods", "PUT, POST, PATCH, DELETE, GET");
+//     return res.status(200).json({});
+//   }
+//   next();
+// });
+
 console.log("port using env is :" + PORT);
 connectDB();
-// middleware
-// const middleware = (req, res, next) => {
-//   console.log("Hello this is middleware");
-//   next();
-// };
 
-// app.get("/", middleware, (req, res) => {
-//   res.send("Hello world");
-// });
+app.use(require("./router/auth")); // router file to make our links
 
 app.listen(PORT, () => {
   console.log(`Backend App is running in port no ${PORT}.`);

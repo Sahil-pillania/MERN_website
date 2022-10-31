@@ -15,8 +15,9 @@ const Login = () => {
   };
 
   const loginUser = async (e) => {
-    const { email, password } = User;
     e.preventDefault();
+    const { email, password } = User;
+    //console.log(email, password);
     const res = await fetch("/signin", {
       method: "POST",
       headers: {

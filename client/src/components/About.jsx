@@ -1,12 +1,44 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import image from "../images/logo.jpg";
+
 const About = () => {
+  const navigate = useNavigate();
+
+  const callAboutPage = async () => {
+    try {
+      const res = await fetch("/aboutpage", {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      });
+
+      const data = await res.json();
+      console.log("data after fetch request is :" + data);
+
+      if (!res.status === 200) {
+        const error = new Error(res.error);
+        throw error;
+      }
+    } catch (error) {
+      console.log("can't redirect into about page " + error);
+      navigate("/login");
+    }
+  };
+
+  useEffect(() => {
+    callAboutPage();
+  }, []);
+
   return (
     <section className="container emp-profile">
-      <form className="profile_form">
+      <form method="GET" className="profile_form">
         <div className="row">
           <div className="col-md-4 uImage grid_divs">
-            <img src={image} alt="user image" />
+            <img src={image} alt="user" />
           </div>
           <div className="col-md-5 grid_divs">
             <div className="profile-head">
