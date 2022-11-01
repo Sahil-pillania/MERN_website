@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "./components/Navbar";
 import Login from "./components/Login";
+import Logout from "./components/Logout";
 import Contact from "./components/Contact";
 import About from "./components/About";
 import Signup from "./components/Signup";
@@ -21,6 +22,7 @@ const App = () => {
         <Route path="/Contact" element={<Contact />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/Login" element={<Login />} />
+        <Route path="/Logout" element={<Logout />} />
         <Route path="*" element={<Error />} />
       </Routes>
       <Footer />

@@ -128,7 +128,7 @@ router.get("/aboutpage", authenticate, (req, res) => {
 });
 // user data for home and contact page
 router.get("/getdata", authenticate, (req, res) => {
-  //console.log("hello about");
+  //console.log("hello getData");
   res.send(req.rootUser);
 });
 
@@ -158,6 +158,15 @@ router.post("/contact", authenticate, async (req, res) => {
   } catch (error) {
     console.log(error);
   }
+});
+
+// user logout functionality
+router.get("/logoutpage", (req, res) => {
+  console.log("hello Logout");
+
+  res.clearCookie("jwtoken");
+
+  res.status(200).send("User Logout");
 });
 
 module.exports = router;
