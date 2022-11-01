@@ -1,8 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../App";
 
 const Logout = () => {
   const navigate = useNavigate();
+  const { state, dispatch } = useContext(UserContext);
 
   // promises
   useEffect(() => {
@@ -15,6 +17,7 @@ const Logout = () => {
       credentials: "include",
     })
       .then((res) => {
+        dispatch({ type: "USER", payload: false });
         navigate("/Login", { replace: true });
         if (!res.status === 200) {
           const error = new Error(res.error);
