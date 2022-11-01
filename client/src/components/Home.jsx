@@ -23,7 +23,7 @@ const Home = () => {
         throw error;
       }
     } catch (error) {
-      console.log("can't redirect  " + error);
+      //console.log("can't redirect  " + error);
       // navigate("/login");
     }
   };
